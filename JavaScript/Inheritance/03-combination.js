@@ -4,6 +4,7 @@
 */
 
 function Animal(name) {
+  this.age = 18;
   this.name = name;
   this.colors = ["black", "white"];
 }
@@ -14,6 +15,8 @@ Animal.prototype.getName = function () {
 function Dog(name, age) {
   // stealing
   Animal.call(this, name);
+  // 子类属性一定要在父类构造函数之后定义
+  // 否则会被覆盖
   this.age = age;
 }
 
@@ -31,3 +34,6 @@ let dog2 = new Dog("哈赤", 1);
 console.log(dog2);
 // 方法重用
 console.log(dog1.getName === dog2.getName); // true
+
+// 效率问题，子类原型上存在冗余属性
+console.log(Dog.prototype.age);
