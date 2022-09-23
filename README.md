@@ -24,3 +24,7 @@
 | [寄生式组合继承](JavaScript/Inheritance/06-parasiticAndCombination.js)                  | 继承    |             |
 | [class 继承](JavaScript/Inheritance/07-class.js)                                        | 继承    |             |
 | [防抖节流](JavaScript/debounce-throttle/main.js)                                        | 继承    |             |
+| [响应式概念](Vue/reactive/01-reactive-basic-concept/main.js)                            | Vue     |             |
+| [注册副作用函数](Vue/reactive/02-effectFn-wrapper/main.js)                              | Vue     |             |
+| [关联属性与副作用函数](Vue/reactive/03-bind-key-with-effectFn/main.js)                  | Vue     |             |
+| [执行前清除副作用](Vue/reactive/04-cleanup-before-run/main.js)                          | Vue     |             |
