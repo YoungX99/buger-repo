@@ -29,15 +29,15 @@ const obj = new Proxy(data, {
 //   activeEffect = fn
 //   fn()
 // }
-function effect(fn) {
-  const effectFn = () => {
-    activeEffect = effectFn
-    fn()
-  }
-  // activeEffect.deps 用来存储所有与该副作用函数相关联的依赖集合
-  effectFn.deps = []
-  effectFn()
-}
+// function effect(fn) {
+//   const effectFn = () => {
+//     activeEffect = effectFn
+//     fn()
+//   }
+//   // activeEffect.deps 用来存储所有与该副作用函数相关联的依赖集合
+//   effectFn.deps = []
+//   effectFn()
+// }
 
 function effect(fn) {
   const effectFn = () => {
