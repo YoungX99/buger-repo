@@ -28,3 +28,10 @@
 | [注册副作用函数](Vue/reactive/02-effectFn-wrapper/main.js)                              | Vue     |             |
 | [关联属性与副作用函数](Vue/reactive/03-bind-key-with-effectFn/main.js)                  | Vue     |             |
 | [执行前清除副作用](Vue/reactive/04-cleanup-before-run/main.js)                          | Vue     |             |
+| [嵌套 Effect](Vue/reactive/05-nest-effect/main.js)                                      | Vue     |             |
+| [避免无限递归](Vue/reactive/06-avoid-infinite-recursion/main.js)                        | Vue     |             |
+| [调度器](Vue/reactive/07-schedule/main.js)                                              | Vue     |             |
+| [计算属性](Vue/computed/main.js)                                                        | Vue     |             |
+| [wacth](Vue/watch/base-watch/main.js)                                                   | Vue     |             |
+| [立即执行 watch](Vue/watch/immediate-watch/main.js)                                     | Vue     |             |
+| [渲染器](Vue/renderer/01-base-renderer-case/main.js)                                    | Vue     |             |
