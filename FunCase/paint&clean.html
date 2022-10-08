@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>paint and clean</title>
+    <style>
+        body {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        #app {
+            display: flex;
+            justify-content: center;
+        }
+
+        .square {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            border: 1px solid #000;
+            transition: all ease .3s;
+        }
+    </style>
+</head>
+
+<body>
+    <p> Build six squares with no color.
+        Every time you click one, it turns green
+        When the last square turns green, they all go back to no color in <strong>backwards sequence</strong> to which
+        it was
+        clicked (not all at once)</p>
+    <div id="app"></div>
+</body>
+<script>
+    const INPUT__NUM = 6
+    const stack = []
+    createSquare()
+
+
+
+    function createSquare() {
+        const container = document.querySelector('#app')
+        for (let i = 0; i < INPUT__NUM; i++) {
+            const ele = document.createElement('div');
+            container.appendChild(ele)
+            ele.classList.add("square");
+            ele.addEventListener('click', paint)
+        }
+    }
+    function paint(e) {
+        const { currentTarget: ele } = e
+        ele.style.backgroundColor = 'green'
+        stack.push(ele)
+        if (stack.length === INPUT__NUM) {
+            clean()
+        }
+    }
+    function clean() {
+        for (let i = 0; i < INPUT__NUM; i++) {
+            const ele = stack.pop()
+            setTimeout(() => {
+                ele.style.backgroundColor = ''
+            }, (i + 1) * 200); // last square(i=0) should add some delay
+        }
+    }
+</script>
+
+</html>
