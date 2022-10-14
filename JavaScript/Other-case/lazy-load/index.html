@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lazyload</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img src="http://iph.href.lu/[200]x[200]" data-src="./avatar.png" alt="">
+        <img src="http://iph.href.lu/[200]x[200]" data-src="./avatar.png" alt="">
+        <img src="http://iph.href.lu/[200]x[200]" data-src="./avatar.png" alt="">
+        <img src="http://iph.href.lu/[200]x[200]" data-src="./avatar.png" alt="">
+        <img src="http://iph.href.lu/[200]x[200]" data-src="./avatar.png" alt="">
+        <img src="http://iph.href.lu/[200]x[200]" data-src="./avatar.png" alt="">
+        <img src="http://iph.href.lu/[200]x[200]" data-src="./avatar.png" alt="">
+        <img src="http://iph.href.lu/[200]x[200]" data-src="./avatar.png" alt="">
+        <img src="http://iph.href.lu/[200]x[200]" data-src="./avatar.png" alt="">
+        <img src="http://iph.href.lu/[200]x[200]" data-src="./avatar.png" alt="">
+        <img src="http://iph.href.lu/[200]x[200]" data-src="./avatar.png" alt="">
+        <img src="http://iph.href.lu/[200]x[200]" data-src="./avatar.png" alt="">
+        <img src="http://iph.href.lu/[200]x[200]" data-src="./avatar.png" alt="">
+        <img src="http://iph.href.lu/[200]x[200]" data-src="./avatar.png" alt="">
+    </div>
+
+</body>
+<script>
+    function lazyload() {
+        const viewHeight =
+            window.innerHeight || document.documentElement.clientHeight; //获取可视区高度
+        const imgs = document.querySelectorAll("img[data-src]");
+        imgs.forEach((item) => {
+            // 如果没有这个属性，说明这个图片已经被加载过了
+            if (item.dataset.src === "") return;
+            // 用于获得页面中某个元素的左，上，右和下分别相对浏览器视窗的位置
+            const rect = item.getBoundingClientRect();
+            // 当图片顶部进入视口底部，显示
+            if (rect.top <= viewHeight) {
+                item.src = item.dataset.src;
+                // 加载后的图片移除即可
+                item.removeAttribute("data-src");
+            }
+        });
+    }
+    // 首屏加载
+    window.onload = lazyload;
+    // 绑定事件
+    window.addEventListener("scroll", lazyload);
+</script>
+
+</html>
