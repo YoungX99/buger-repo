@@ -20,10 +20,6 @@ const mergeSort = (arr, left, right, temp) => {
   // 注意两端的值
   mergeSort(arr, left, mid, temp)
   mergeSort(arr, mid + 1, right, temp)
-  merge(arr, left, mid, right, temp)
-}
-
-const merge = (arr, left, mid, right, temp) => {
   let i = left
   let j = mid + 1
   let t = 0
