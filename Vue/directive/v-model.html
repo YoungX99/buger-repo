@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-model</title>
+</head>
+
+<body>
+    <input type="text" id="my-input">
+    <p id="data"></p>
+    <button id="my-btn">click 数据变动</button>
+</body>
+<script>
+    const input = document.getElementById('my-input');
+    const log = document.getElementById('data');
+    const btn = document.getElementById('my-btn');
+    // 原始数据初始化
+    const data = { value: 'hello world' }
+
+
+    const dataRef = new Proxy(data, {
+        get(target, key) {
+            return target[key]
+        },
+        // 第一次绑定，log 的值影响输入框，利用 proxy 代理对象进行写劫持
+        set(target, key, newVal) {
+            target[key] = newVal
+            // 数据变更引起视图更新
+            effect(newVal)
+            return true
+        }
+    })
+    // 第二次绑定，输入框的值绑定视图中（视图更新数据）
+    function updateValue(e) {
+        dataRef.value = e.srcElement.value;
+    }
+
+    function effect(val) {
+        // 一个小问题：若是 updateValue 触发 effect 执行，则 input.value 的更新将多此一举
+        log.textContent = val
+        input.value = val
+    }
+
+    input.addEventListener('input', updateValue);
+    btn.onclick = () => {
+        dataRef.value += 'vue'
+    }
+    // 视图初始化
+    effect(dataRef.value)
+</script>
+
+</html>
